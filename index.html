@@ -29,7 +29,7 @@
                 $("#grid").kendoGrid({
                     toolbar: ["excel"],
                     excel: {
-                        fileName: "Kendo UI Grid Export.xlsx"
+                        fileName: "Customer Export.xlsx"
                     },
                     dataSource: {
                         type: "odata",
@@ -53,16 +53,17 @@
                       
                         field: "CustomerName",
                         title: "Customer Name",
-                        width: 240
+                        width: 250
                     },  { 
                         field: "CustomerEmail",
                         title: "Customer Email",
+                        width: 200
                     }, {
                         field: "ContactTitle",
-                        title: "Contact Title"
+                        title: "Title"
                     }, {
                         field: "CompanyName",
-                        title: "Company Name"
+                        title: "Company "
                     }, {
                         field: "Location",
                         width: 150
