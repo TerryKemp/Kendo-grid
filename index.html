@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        html {
+            font-size: 15px;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif, Helvetica, sans-serif;
+        }
+    </style>
+    <title></title>
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2018.3.911/styles/kendo.material.mobile.min.css" />
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2018.3.911/styles/kendo.material.min.css" />
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2018.3.911/styles/kendo.common-material.min.css" />
+
+
+    <script src="https://kendo.cdn.telerik.com/2018.3.911/js/jquery.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2018.3.911/js/kendo.all.min.js"></script>
+
+
+</head>
+
+<body>
+<h1>Customer Tracker</h1>
+    <div id="container">
+        <div id="grid"></div>
+        <script>
+            $(document).ready(function () {
+                $("#grid").kendoGrid({
+                    toolbar: ["excel"],
+                    excel: {
+                        fileName: "Kendo UI Grid Export.xlsx"
+                    },
+                    dataSource: {
+                        type: "odata",
+                        transport: {
+                            read: ""
+                        },
+                        pageSize: 20
+                    },
+                    height: 550,
+                    groupable: true,
+                    sortable: true,
+                    pageable: {
+                        refresh: true,
+                        pageSizes: true,
+                        buttonCount: 5
+                    },
+                    columns: [{
+                        template: 
+                            "style='background-image: url(../content/web/Customers/#:data.CustomerID#.jpg);'></div>" +
+                            "<div class='customer-name'>#: ContactName #</div>",
+                      
+                        field: "CustomerName",
+                        title: "Customer Name",
+                        width: 240
+                    },  { 
+                        field: "CustomerEmail",
+                        title: "Customer Email",
+                    }, {
+                        field: "ContactTitle",
+                        title: "Contact Title"
+                    }, {
+                        field: "CompanyName",
+                        title: "Company Name"
+                    }, {
+                        field: "Location",
+                        width: 150
+                    }]
+                });
+            });
+        </script>
+    </div>
+
+    <style type="text/css">
+
+        .customer-name {
+            display: inline-block;
+            vertical-align: middle;
+            line-height: 32px;
+            padding-left: 3px;
+            text-align: center;
+        }
+        h1 {
+            text-align: center;
+            text-decoration: underline;
+        }
+    </style>
+
+
+</body>
+
+</html>
