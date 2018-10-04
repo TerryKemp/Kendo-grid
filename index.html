@@ -21,7 +21,104 @@
 </head>
 
 <body>
+    <h2> Cascading Combo Box</h2>
+    <div id="selected-drop-down">
     
+    
+        <div class="section k-content">
+            <ul id="fieldlist">
+                <li>
+                    <label for="categories">Sports</label>
+                    <input id="categories" style="width: 100%;" />
+                </li>
+                <li>
+                    <label for="teams">Teams</label>
+                    <input id="teams" disabled="disabled" style="width: 100%;" />
+                </li>
+                <li>
+                    <label for="mascot">Mascots</label>
+                    <input id="mascot" disabled="disabled" style="width: 100%;" />
+                </li>
+                <li>
+                    <button class="k-button k-primary" id="get">View Selections</button>
+                </li>
+            </ul>
+        </div>
+    
+        <style>
+            #fieldlist {
+                margin: 0;
+                padding: 0;
+            }
+    
+            #fieldlist li {
+                list-style: none;
+                padding-bottom: 1.5em;
+                text-align: left;
+            }
+    
+            #fieldlist label {
+                display: block;
+                padding-bottom: .3em;
+                font-weight: bold;
+                text-transform: uppercase;
+                font-size: 12px;
+            }
+        </style>
+    
+        <script>
+            $(document).ready(function () {
+                var categories = $("#categories").kendoComboBox({
+                    filter: "contains",
+                    placeholder: "Select Sport...",
+                    dataTextField: "CategoryName",
+                    dataValueField: "CategoryID",
+                    dataSource: {
+                        type: "odata",
+                        serverFiltering: true,
+                        transport: {
+                        }
+                    }
+                }).data("kendoComboBox");
+
+                var teams = $("#teams").kendoComboBox({
+                    autoBind: false,
+                    cascadeFrom: "categories",
+                    filter: "contains",
+                    placeholder: "Select Team...",
+                    dataTextField: "ProductName",
+                    dataSource: {
+                        type: "odata",
+                        serverFiltering: true,
+                        transport: {
+                        }
+                    }
+                }).data("kendoComboBox");
+
+                var mascot = $("#mascot").kendoComboBox({
+                    autoBind: false,
+                    cascadeFrom: "teams",
+                    filter: "contains",
+                    placeholder: "Select Mascot...",
+                    dataSource: {
+                        type: "odata",
+                        serverFiltering: true,
+                        transport: {
+                        }
+                    }
+                }).data("kendoComboBox");
+
+                $("#get").click(function () {
+                    var categoryInfo = "\nCategory: { id: " + categories.value() + ", name: " + categories.text() + " }",
+                        productInfo = "\nProduct: { id: " + teams.value() + ", name: " + teams.text() + " }",
+                        orderInfo = "\nOrder: { id: " + mascot.value() + ", name: " + mascot.text() + " }";
+
+                    alert("Order details:\n" + categoryInfo + productInfo + orderInfo);
+                });
+            });
+        </script>
+    </div>
+
 <h1>Kendo Grid</h1>
     <div id="container">
         <div id="grid"></div>
@@ -151,6 +248,7 @@
                     });
                 });
             </script>
+            
         </div>
 
 
