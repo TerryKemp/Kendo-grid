@@ -21,6 +21,74 @@
 </head>
 
 <body>
+    <div id="charts">
+    <div class="section k-content wide">
+        <div id="chart"></div>
+    </div>
+    <script>
+
+
+        function createChart() {
+            $("#chart").kendoChart({
+                title: {
+                    text: "Amount of Sports fans"
+                },
+                legend: {
+                    position: "bottom"
+                },
+                seriesDefaults: {
+                    type: "area",
+                    area: {
+                        line: {
+                            style: "smooth"
+                        }
+                    }
+                },
+                series: [{
+                    name: "Soccer",
+                    data: [3.907, 7.943, 7.848, 9.284]
+                }, {
+                    name: "Baseball",
+                    data: [1.988, 2.733, 3.994, 3.464]
+                }, {
+                    name: "Football",
+                    data: [0.253, 0.362, 3.519, 1.799]
+                }],
+                valueAxis: {
+                    labels: {
+                        format: "{0}%"
+                    },
+                    line: {
+                        visible: false
+                    },
+                    axisCrossingValue: -10
+                },
+                categoryAxis: {
+                    categories: [1998, 2008, 2014, 2018],
+                    majorGridLines: {
+                        visible: false
+                    },
+                    labels: {
+                        rotation: "auto"
+                    }
+                },
+                tooltip: {
+                    visible: true,
+                    format: "{0}%",
+                    template: "#= series.name #: #= value #"
+                }
+            });
+        }
+
+        $(document).ready(createChart);
+        $(document).bind("kendo:skinChange", createChart);
+    </script>
+    <style type="text/css">
+        #chart {
+            background: center no-repeat url('../content/shared/styles/world-map.png');
+        }
+    </style>
+</div>
     <div id="big-window">
         <div id="window">
             <h4>Window</h4>
