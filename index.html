@@ -19,6 +19,59 @@
 
 
 </head>
+<body>
+    <h3>Tree</h3>
+    <div id="terrys-tree">
+        <div class="ksprites">
+            <ul id="treeview">
+                <li data-expanded="true">
+                    <span class="k-sprite folder"></span>
+                 
+
+                        <li data-expanded="true">
+                            <span class="k-sprite folder"></span>Sports
+                            <ul>
+                                <li><span class="k-sprite"></span>Baseball</li>
+                                <li><span class="k-sprite"></span>Football</li>
+                                <li><span class="k-sprite"></span>Soccer</li>
+                        </li>
+
+
+
+                </li>
+            </ul>
+        </div>
+
+        <script>
+            $(document).ready(function () {
+                $("#treeview").kendoTreeView();
+            });
+        </script>
+
+        <style>
+            #treeview .k-sprite {}
+
+            .rootfolder {
+                background-position: 0 0;
+            }
+
+            .folder {
+                background-position: 0 -16px;
+            }
+
+            .pdf {
+                background-position: 0 -32px;
+            }
+
+            .html {
+                background-position: 0 -48px;
+            }
+
+            .image {
+                background-position: 0 -64px;
+            }
+        </style>
+    </div>
 
 <body>
     <div id="charts">
