@@ -21,7 +21,8 @@
 </head>
 
 <body>
-<h1>Customer Tracker</h1>
+    
+<h1>Kendo Grid</h1>
     <div id="container">
         <div id="grid"></div>
         <script>
@@ -38,7 +39,7 @@
                         },
                         pageSize: 20
                     },
-                    height: 550,
+                    height: 350,
                     groupable: true,
                     sortable: true,
                     pageable: {
@@ -50,6 +51,7 @@
                         template: 
                             "style='background-image: url(../content/web/Customers/#:data.CustomerID#.jpg);'></div>" +
                             "<div class='customer-name'>#: ContactName #</div>",
+                            
                       
                         field: "CustomerName",
                         title: "Customer Name",
@@ -87,6 +89,69 @@
             text-decoration: underline;
         }
     </style>
+</head>
+<div id="dropdown">
+        <div id="view" class="section k-content">
+            <h2>Drop Down Menu</h2>
+            <h4>Select Your Favorite Sport</h4>
+           
+            <h4><label for="color">Sport</label></h4>
+            <input id="color" value="1" style="width: 100%;" />
+            </select>
+
+            <button class="k-button k-primary" id="get" style="margin-top: 2em; float: right;">Select</button>
+        </div>
+        <style>
+            #cap {
+                width: 242px;
+                height: 225px;
+                margin: 20px auto;
+                background-image: url('../content/web/dropdownlist/cap.png');
+                background-repeat: no-repeat;
+                background-color: transparent;
+            }
+            
+        </style>
+
+            <script>
+                $(document).ready(function() {
+                    var data = [
+                        { text: "Baseball", value: "1" },
+                        { text: "Football", value: "2" },
+                        { text: "Soccer", value: "3" }
+                    ];
+
+                    // create DropDownList from input HTML element
+                    $("#color").kendoDropDownList({
+                        dataTextField: "text",
+                        dataValueField: "value",
+                        dataSource: data,
+                        index: 0,
+                        change: onChange
+                    });
+
+                    // create DropDownList from select HTML element
+                    $("#size").kendoDropDownList();
+
+                    var sport = $("#sport").data("kendoDropDownList");
+
+                    sport.select(0);
+                    var size = $("#size").data("kendoDropDownList");
+
+                    function onChange() {
+                        var value = $("#sport").val();
+                        $("#cap")
+                            .toggleClass("Baseball", value == 1)
+                            .toggleClass("Football", value == 2)
+                            .toggleClass("Soccer", value == 3);
+                    };
+
+                    $("#get").click(function() {
+                        alert('Thank you! Your Choice is:\n\nColor ID: '+color.value()+' and Size: '+size.value());
+                    });
+                });
+            </script>
+        </div>
 
 
 </body>
