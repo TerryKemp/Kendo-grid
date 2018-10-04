@@ -21,6 +21,21 @@
 </head>
 
 <body>
+    <div id="calender">
+        <div class="calender-section k-content" style="text-align: center;">
+            <h4>Multiple Selection</h4>
+            <div id="calendar"></div>
+        </div>
+        <script>
+            $(document).ready(function () {
+                $("#calendar").kendoCalendar({
+                    selectable: "multiple",
+                    weekNumber: true,
+                });
+            });
+        </script>
+    </div>
+
     <h2> Cascading Combo Box</h2>
     <div id="selected-drop-down">
     
